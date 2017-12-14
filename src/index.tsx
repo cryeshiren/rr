@@ -9,13 +9,13 @@ import * as ReduxPromise from 'redux-promise';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 
-import {App} from './component/app';
+import {WeatherView} from './view/WeatherView';
 import Reducers from './reducer';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render((
     <Provider store={createStoreWithMiddleware(Reducers)}>
-        <App/>
+        <WeatherView/>
     </Provider>
 ), document.querySelector('.container'));

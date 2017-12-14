@@ -4,8 +4,12 @@
     "target": "es5",
     "sourceMap": true,
     "jsx": "react",
-    "watch": true
+    "watch": true,
+    "outDir": "js"
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules"
   ]
