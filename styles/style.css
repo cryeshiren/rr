@@ -1,0 +1,17 @@
+.weather-search {
+    margin: 20px 0px;
+}
+
+.weather-chart {
+    height: 300px;
+}
+
+td, th {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+td {
+    height: 20px;
+    width: 250px;
+}
