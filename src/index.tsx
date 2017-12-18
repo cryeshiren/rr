@@ -1,21 +1,22 @@
-/**
- * Created by www.wuleba.com on 2016/9/26.
- */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReduxPromise from 'redux-promise';
 
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import Hello from './containers/Hello';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { enthusiasm } from './reducers/index';
+import { StoreState } from './types/index';
 
-import {WeatherView} from './view/WeatherView';
-import Reducers from './reducer';
+import './index.css';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStore<StoreState>(enthusiasm, {
+  enthusiasmLevel: 1,
+  languageName: 'TypeScript',
+});
 
-ReactDOM.render((
-    <Provider store={createStoreWithMiddleware(Reducers)}>
-        <WeatherView/>
-    </Provider>
-), document.querySelector('.container'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Hello />
+  </Provider>,
+  document.getElementById('root') as HTMLElement
+);
