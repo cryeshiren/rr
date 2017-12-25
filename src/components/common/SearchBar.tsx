@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { TextField, Button } from "material-ui";
+import { TextField, Button } from 'material-ui';
 
 export interface SearchBarProps {
     label?: string;
-    onSearch: (text: string) => void
+    onSearch: (text: string) => void;
 }
 
 export interface SearchBarState {
-    text: string
+    text: string;
 }
 
 export default class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-    constructor(props) {
+    constructor(props: SearchBarProps) {
         super(props);
         this.state = { text: '' };
     }
@@ -35,11 +35,13 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
                     label={this.props.label} 
                     type="search" 
                     margin="normal"
-                    onChange={(event) => this.handleOnChange(event)}/>
+                    onChange={(event) => this.handleOnChange(event)}
+                />
                 <Button 
-                    raised 
+                    raised={true}
                     type="submit"
-                    onClick={(event) => this.handleOnClick(event)}>
+                    onClick={(event) => this.handleOnClick(event)}
+                >
                     Search
                 </Button>
             </div>
