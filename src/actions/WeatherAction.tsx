@@ -16,11 +16,5 @@ export function fetchWeather(city: string) : IFetchWeather {
 
 function getWeatherData(city: string) {
     const url = `${ROOT_URL}&q=${city},cn`;
-    const request = axios.get(url)
-        .catch(function(error) {
-            console.log(error);
-            return '';
-        });
-    console.log(request);
-    return request;
+    return axios.get(url).then((p) => {return p.data});
 }

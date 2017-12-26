@@ -27,8 +27,7 @@ export class WeatherContainer extends React.Component<any, WeatherState> {
 }
 
 function mapStateToProps(state) {
-    console.log('123123123'+state.weathers);
-    return ({weather: state.weathers});
+    return ({weathers: state.weathers});
 }
 
 export default connect(mapStateToProps)(WeatherContainer);

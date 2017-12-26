@@ -10,21 +10,24 @@ interface WeatherState {}
 
 export default class WeatherList extends React.Component<WeatherListProps, WeatherState> {
   render() {
+      console.log(this.props.weathers);
     return (
       <div>
-          <TableBody>
+          <Table>
+            <TableBody>
             {this.props.weathers.map((weather, index) => 
                     <TableRow
                         hover={true}
                         key={index}
                     >
                         <TableCell>
-                            <Map latitude={weather.latitude} longitude={weather.longitude}/>
+                            <Map latitude={weather.city.latitude} longitude={weather.city.longitude}/>
                         </TableCell>
                     </TableRow>
                 )
-            };
-          </TableBody>
+            }
+            </TableBody>
+          </Table>
       </div>
     );
   }
