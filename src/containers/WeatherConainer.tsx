@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SearchBar from '../components/common/SearchBar';
-import { fetchWeather } from '../actions/WeatherAction';
+import { fetchNeeded } from '../actions/WeatherAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import WeatherList from '../components/Weather/WeatherList';
@@ -19,7 +19,7 @@ export class WeatherContainer extends React.Component<any, WeatherState> {
         const { disptach, weathers } = this.props;
         return (
         <div>
-            <SearchBar onSearch={text => this.props.dispatch(fetchWeather(text))} label='Please enter city name'/>
+            <SearchBar onSearch={text => this.props.dispatch(fetchNeeded(text))} label='Please enter city name'/>
             <WeatherList weathers={weathers}/>
         </div>
         );

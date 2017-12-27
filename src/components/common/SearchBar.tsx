@@ -24,7 +24,7 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
     handleOnClick(event) {
         event.preventDefault();
         this.props.onSearch(this.state.text.trim());
-        this.setState({ text: '' });
+        //this.setState({ text: '' });
     }
 
     render() {

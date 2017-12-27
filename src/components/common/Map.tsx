@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactMapGL from 'react-map-gl';
+import { MAPBOX_TOKEN } from "../../constants/index";
 
 interface MapProps {
   width?: number;
@@ -16,10 +17,12 @@ export default class Map extends React.Component<MapProps, MapState> {
     return (
       <div>
         <ReactMapGL 
-            width={!width ? 40 : width}
-            height={!height ? 40 : height}
+            width={!!width ? width : 200}
+            height={!!height ? height : 200}
             latitude={latitude}
             longitude={longitude}
+            zoom={8}
+            mapboxApiAccessToken={MAPBOX_TOKEN}
         />
       </div>
     );

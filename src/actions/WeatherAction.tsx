@@ -7,14 +7,27 @@ interface IFetchWeather {
     weathers: any;
 }
 
-export function fetchWeather(city: string) : IFetchWeather {
+function fetchWeather(weathers: any) : IFetchWeather {
     return {
         type: FETCH_WEATHER,
-        weathers: getWeatherData(city)
+        weathers: weathers
     };
 }
 
 function getWeatherData(city: string) {
     const url = `${ROOT_URL}&q=${city},cn`;
-    return axios.get(url).then((p) => {return p.data});
+    return axios.get(url);
+}
+
+function fetch(city: string) {
+    return dispatch => {
+        dispatch(fetchWeather([]));
+    return getWeatherData(city)
+      .then(response => response.data)
+      .then(data => dispatch(fetchWeather(data)))
+    }
+}
+
+export function fetchNeeded(city: string) {
+    return dispatch => dispatch(fetch(city));
 }
