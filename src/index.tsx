@@ -1,22 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Hello from './containers/Hello';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
+import WeatherConainer from "./containers/WeatherConainer";
+import reducers from './reducers/WeatherReducer';
+import thunkMiddleware from 'redux-thunk';
 
-import './styles/index.css'
 
-const store = createStore<StoreState>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-});
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <WeatherConainer />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
