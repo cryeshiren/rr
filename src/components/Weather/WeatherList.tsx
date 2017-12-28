@@ -19,13 +19,23 @@ export default class WeatherList extends React.Component<WeatherListProps, Weath
           <Table>
             <TableBody>
             {weathers.map((weather, index) => {
+                        const viewport = {
+                            latitude: weather.city.coord.lat,
+                            longitude: weather.city.coord.lon,
+                            zoom: 11,
+                            bearing: 0,
+                            pitch: 0,
+                            width: 200,
+                            height: 200
+                        };
+
                         return (
                             <TableRow
                                 hover={true}
                                 key={index}
                             >
                                 <TableCell>
-                                    <Map latitude={weather.city.coord.lat} longitude={weather.city.coord.lon}/>
+                                    <Map viewport = {viewport}/>
                                 </TableCell>
                             </TableRow>
                         )

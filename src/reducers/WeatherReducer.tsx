@@ -4,12 +4,9 @@ import { combineReducers } from 'redux';
 function weathers(state = [], action) {
     switch (action.type) {
         case FETCH_WEATHER:
-        console.log('====================================');
-        console.log(action.weathers);
-        console.log('====================================');
             return [
-                ...state,
-                action.weathers
+                action.weathers,
+                ...state
             ];
         default:
             return state;
