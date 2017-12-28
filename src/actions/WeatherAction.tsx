@@ -19,15 +19,10 @@ function getWeatherData(city: string) {
     return axios.get(url);
 }
 
-function fetch(city: string) {
+export function fetch(city: string) {
     return dispatch => {
-        dispatch(fetchWeather([]));
-    return getWeatherData(city)
-      .then(response => response.data)
-      .then(data => dispatch(fetchWeather(data)))
-    }
-}
-
-export function fetchNeeded(city: string) {
-    return dispatch => dispatch(fetch(city));
+        return getWeatherData(city)
+        .then(response => response.data)
+        .then(data => dispatch(fetchWeather(data)))
+        }
 }
