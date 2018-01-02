@@ -1,14 +1,16 @@
 import * as React from 'react';
-import LineChart, { Line, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 
 
 export class WeatherLineChartModel {
-  constructor(date: string, temperature: number) {
+  constructor(date: number, temperature: number, dateText: string) {
     this.date = date;
     this.temperature = temperature;
+    this.dateText = dateText;
   }
-  date: string;
+  date: number;
   temperature: number;
+  dateText: string
 }
 
 interface WeatherLineChartProps {
@@ -16,17 +18,6 @@ interface WeatherLineChartProps {
   width: number,
   height: number
 }
-
-
-const data02 = [
-  { name: 'Page A', uv: 300, pv: 2600, amt: 3400 },
-  { name: 'Page B', uv: 400, pv: 4367, amt: 6400 },
-  { name: 'Page C', uv: 300, pv: 1398, amt: 2400 },
-  { name: 'Page D', uv: 200, pv: 9800, amt: 2400 },
-  { name: 'Page E', uv: 278, pv: 3908, amt: 2400 },
-  { name: 'Page F', uv: 189, pv: 4800, amt: 2400 },
-  { name: 'Page G', uv: 189, pv: 4800, amt: 2400 },
-];
 
 export default class WeatherLineChart extends React.Component<WeatherLineChartProps, any> {
   constructor(props) {
@@ -36,14 +27,15 @@ export default class WeatherLineChart extends React.Component<WeatherLineChartPr
 
   render() {
     console.log('====================================');
-    console.log(this.state.datas);
-    console.log(this.state.width);
-    console.log(this.state.height);
+    console.log(this.state);
     console.log('====================================');
     return (
         <div>
-          <LineChart width={this.state.width} height={this.state.height} data={data02}>
-              <Line dataKey="pv"/>
+          <LineChart width={this.state.width} height={this.state.height} data={this.state.datas}>
+            <XAxis dataKey="dateText"/>
+            <YAxis />
+            <Line dataKey="temperature"/>
+            <Tooltip/>
           </LineChart>
         </div>
     );

@@ -41,7 +41,7 @@ export default class WeatherList extends React.Component<WeatherListProps, Weath
                                             <Map viewport={viewport}/>
                                         </TableCell>
                                         <TableCell>
-                                            <WeatherLineChart datas={temperatures} width={200} height={200}/>
+                                            <WeatherLineChart datas={getSevenDayWeathers(temperatures)} width={400} height={200}/>
                                         </TableCell>
                                     </TableRow>
                                 );
@@ -57,6 +57,17 @@ export default class WeatherList extends React.Component<WeatherListProps, Weath
 
 function toModel(list: Array<any>) : Array<WeatherLineChartModel>{
     return list.map<WeatherLineChartModel>(l => {
-        return new WeatherLineChartModel(l.dt_txt, l.main.temp);
+        let date = new Date(l.dt_txt);
+        return new WeatherLineChartModel(date.getHours(), kelvinToCelsius(l.main.temp), date.toLocaleDateString());
     });
+}
+
+function getSevenDayWeathers(list: Array<WeatherLineChartModel>) : Array<WeatherLineChartModel> {
+    return list.filter(l => {
+        return l.date == 12;
+    });
+}
+
+function kelvinToCelsius(kelvin: number) : number {
+    return Math.round(kelvin - 273.15);
 }
