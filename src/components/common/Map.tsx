@@ -56,7 +56,7 @@ export default class Map extends React.Component<MapProps, MapState> {
 
   render() {
 
-    const {viewport} = this.state;
+    const {viewport} = this.props;
 
     return (
       <div>
