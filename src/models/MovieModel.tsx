@@ -13,30 +13,30 @@ export class MovieModel {
 
 
 export class Rating {
+    max: number;
+    average: number;
+    min: number;
     constructor(max: number, average: number, min: number) {
         this.max = max;
         this.average = average;
         this.min = min;
     }
-    max: number;
-    average: number;
-    min: number;
 }
 
 export class Actor {
+    name: string;
+    website: string;
+    avatars: string;
     constructor(name: string, website: string, avatars: string) {
         this.name = name;
         this.website = website;
         this.avatars = avatars;
     }
-    name: string;
-    website: string;
-    avatars: string;
 }
 
 export class Director {
+    name: string;
     constructor(name: string) {
         this.name = name;
     }
-    name: string;
 }
