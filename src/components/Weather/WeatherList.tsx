@@ -15,6 +15,10 @@ export default class WeatherList extends React.Component<WeatherListProps, Weath
         return !!weather.city;
     });
 
+    console.log('=================list===================');
+    console.log(weathers);
+    console.log('====================================');
+
     return (
         <div>
             <Table>
@@ -31,7 +35,6 @@ export default class WeatherList extends React.Component<WeatherListProps, Weath
                                 };
                                 
                                 const temperatures = toModel(weather.list);
-
                                 return (
                                     <TableRow
                                         hover={true}

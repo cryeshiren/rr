@@ -20,18 +20,10 @@ interface WeatherLineChartProps {
 }
 
 export default class WeatherLineChart extends React.Component<WeatherLineChartProps, any> {
-  constructor(props) {
-    super(props);
-    this.state = this.props;
-  }
-
   render() {
-    console.log('====================================');
-    console.log(this.state);
-    console.log('====================================');
     return (
         <div>
-          <LineChart width={this.state.width} height={this.state.height} data={this.state.datas}>
+          <LineChart width={this.props.width} height={this.props.height} data={this.props.datas}>
             <XAxis dataKey="dateText"/>
             <YAxis />
             <Line dataKey="temperature"/>
