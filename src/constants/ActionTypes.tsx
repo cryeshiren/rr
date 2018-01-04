@@ -1,2 +1,5 @@
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 export type FETCH_WEATHER = 'FETCH_WEATHER';
+
+export const FETCH_MOVIE = 'FETCH_MOVIE';
+export type FETCH_MOVIE = 'FETCH_MOVIE';
