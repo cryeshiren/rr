@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
-import SearchBar from "../components/common/SearchBar";
-import MovieGridList from "../components/DoubanMovie/MovieGridList";
-import { getMovieData } from "../actions/DoubanMovieAction";
-import { MovieModel, Rating, Actor, Director } from "../models/MovieModel";
+import SearchBar from '../components/common/SearchBar';
+import MovieGridList from '../components/DoubanMovie/MovieGridList';
+import { getMovieData } from '../actions/DoubanMovieAction';
+import { MovieModel, Rating, Actor, Director } from '../models/MovieModel';
 
 interface DoubanMovieContainerState {
   movies: Array<MovieModel>;
   city?: string;
 }
 
-export default class DoubanMovieContainer extends React.Component<any, DoubanMovieContainerState> {
+export default class DoubanMovieContainer extends React.Component<{}, DoubanMovieContainerState> {
   constructor(props) {
     super(props);
     this.state = {movies: [], city:""};
@@ -23,7 +23,7 @@ export default class DoubanMovieContainer extends React.Component<any, DoubanMov
         width: 1782,
         margin: '0 auto'
       }}>
-        <SearchBar label="请输入需要查看的城市" onSearch={ text => this.search(text) }/>
+        <SearchBar label="请输入需要查看的城市" onSearch={text => this.search(text)}/>
         <MovieGridList movies={this.state.movies} cellHeight={297} imageHeight={297} imageWidth={212} cols={6}/>
       </div>
     );
